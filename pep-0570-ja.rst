@@ -21,7 +21,7 @@ Abstract
 This PEP proposes to introduce a new syntax, ``/``, for specifying
 positional-only parameters in Python function definitions.
 
-このPEPは ``/`` を使って、関数定義の引数を位置引数限定として指定できるようにするプロポーザルです。
+このPEPは ``/`` を使って、関数定義の引数を位置限定引数として指定できるようにするプロポーザルです。
 
 Positional-only parameters have no externally-usable name. When a function
 accepting positional-only parameters is called, positional arguments are mapped
@@ -42,7 +42,7 @@ In this PEP, we discuss:
 
 * Python's history and current semantics for positional-only parameters
 
-  位置引数限定のパラメータに対するPythonの歴史と現在のセマンティクス
+  位置限定引数に対するPythonの歴史と現在のセマンティクス
 
 * the problems encountered by not having them
 
@@ -55,18 +55,18 @@ In this PEP, we discuss:
 
 * the benefits of having positional-only parameters
 
-  位置引数限定のパラメータを持つことの利点
+  位置限定引数を持つことの利点
 
 Within context of the motivation, we then:
 
 * discuss why positional-only parameters should be a feature intrinsic to the
   language
 
-  位置引数限定のパラメータが言語固有の機能であるべき理由
+  位置限定引数が言語固有の機能であるべき理由
 
 * propose the syntax for marking positional-only parameters
 
-  位置引数限定引数をマーキングするための構文を提案する
+  位置限定引数をマーキングするための構文を提案する
 
 * present how to teach this new feature
 
@@ -129,7 +129,7 @@ There are functions with other interesting semantics
   would occlude that name going into the ``**kwarg`` keyword variadic parameter
   dict. [#DICT]_
 
-  ``dict()`` 、その mapping / iterator パラメータはオプションであり、意味的には位置引数限定でなければなりません。 このパラメータの外部から見える名前は、その名前が ``**kwarg`` キーワードの可変引数パラメータdictに入ることを防ぎます。
+  ``dict()`` 、その mapping / iterator パラメータはオプションであり、意味的には位置限定引数でなければなりません。 このパラメータの外部から見える名前は、その名前が ``**kwarg`` キーワードの可変引数パラメータdictに入ることを防ぎます。
 
 One can emulate these semantics in Python code by accepting
 ``(*args, **kwargs)`` and parsing the arguments manually. However, this results
@@ -178,7 +178,7 @@ the function is ambiguous and forces users to look at ``help()``, the
 associated auto-generated documentation, or source code to understand what
 parameters the function contractually accepts.
 
-位置引数限定のパラメータは ``*args`` から引数を一つずつ抽出することでエミュレートできます。 ただし、この方法はエラーが発生しやすく、前述のように関数定義と同義ではありません。 この関数の使い方はあいまいであり、関数が契約上どのパラメータを受け入れるかを理解するためには ``help()`` 、関連する自動生成されたドキュメント、またはソースコードを見ることをユーザに強います。
+位置限定引数は ``*args`` から引数を一つずつ抽出することでエミュレートできます。 ただし、この方法はエラーが発生しやすく、前述のように関数定義と同義ではありません。 この関数の使い方はあいまいであり、関数が契約上どのパラメータを受け入れるかを理解するためには ``help()`` 、関連する自動生成されたドキュメント、またはソースコードを見ることをユーザに強います。
 
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Challenges for Users of an API
@@ -191,11 +191,11 @@ these reasons, this notation is currently an outlier that appears only in
 CPython APIs developed in C. Documenting the notation and making it possible
 to use it in Python code would eliminate this disconnect.
 
-最初に位置引数限定の表記法に遭遇したとき、ユーザーは驚くかもしれません。 これはごく最近になって文書化された [#document-positional-only]_ ばかりでPythonコードでは使用できないので驚くのは想像にかたくありません。これらの理由から、この表記法は現在、Cで開発されたCPython APIにのみ現れる異常値です。表記法を文書化し、それをPythonコードで使用できるようにすると、この切断は解消されます。
+最初に位置限定引数の表記法に遭遇したとき、ユーザーは驚くかもしれません。 これはごく最近になって文書化された [#document-positional-only]_ ばかりでPythonコードでは使用できないので驚くのは想像にかたくありません。これらの理由から、この表記法は現在、Cで開発されたCPython APIにのみ現れる異常値です。表記法を文書化し、それをPythonコードで使用できるようにすると、この切断は解消されます。
 
 Furthermore, the current documentation for positional-only parameters is inconsistent
 
-さらに、位置引数限定の引数に関する現在のドキュメントは矛盾しています:
+さらに、位置限定引数の引数に関する現在のドキュメントは矛盾しています:
 
 * Some functions denote optional groups of positional-only parameters by
   enclosing them in nested square brackets. [#BORDER]_

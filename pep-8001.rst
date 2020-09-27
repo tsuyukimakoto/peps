@@ -8,7 +8,7 @@ Author: Brett Cannon <brett@python.org>,
         Łukasz Langa <lukasz@python.org>
         Mariatta <mariatta@python.org>,
         Nathaniel J. Smith <njs@pobox.com>,
-        Pablo Galindo Salgado <pablogsal@gmail.com>,
+        Pablo Galindo Salgado <pablogsal@python.org>,
         Raymond Hettinger <python@rcn.com>,
         Tal Einat <taleinat@gmail.com>,
         Tim Peters <tim.peters@gmail.com>,
@@ -283,7 +283,7 @@ cryptographic systems for Condorcet ballots, the CIVS system was chosen to
 act as a trusted party.
 
 More information about the security and privacy afforded by CIVS, including
-how a malicous voter, election supervisor, or CIVS administrator can
+how a malicious voter, election supervisor, or CIVS administrator can
 influence the election can be be found
 `here <https://civs.cs.cornell.edu/sec_priv.html>`_.
 
